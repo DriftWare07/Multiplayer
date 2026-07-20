@@ -63,6 +63,10 @@ var _mouse_delta := Vector2.ZERO
 
 # Engine virtuals
 
+func _enter_tree() -> void:
+	#setting auth
+	set_multiplayer_authority(name.to_int())
+
 func _ready() -> void:
 	# Redundancy checks to avoid mistakes
 	assert(self is CharacterBody3D, "This script only works within a CharacterBody3D")
@@ -72,7 +76,7 @@ func _ready() -> void:
 	camera_sensitivity = camera_sensitivity / 1000
 	yaw.position.y = CAM_HEIGHT_STAND
 	_movement_controller.initialize(self)
-	set_multiplayer_authority(name.to_int())
+	
 	if not is_multiplayer_authority(): return
 	#this code runs if this is the current player on the client
 	$Yaw/Pitch/Camera3D/indicator.hide()
