@@ -65,7 +65,6 @@ unique_name_in_owner = true
 
 [node name="Camera3D" type="Camera3D" parent="Yaw/Pitch" unique_id=419518238]
 unique_name_in_owner = true
-current = true
 
 [node name="indicator" type="MeshInstance3D" parent="Yaw/Pitch/Camera3D" unique_id=112582523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5783918)

@@ -80,6 +80,7 @@ func _ready() -> void:
 	if not is_multiplayer_authority(): return
 	#this code runs if this is the current player on the client
 	$Yaw/Pitch/Camera3D/indicator.hide()
+	camera.current = true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
