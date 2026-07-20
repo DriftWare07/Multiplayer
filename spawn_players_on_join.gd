@@ -1,10 +1,11 @@
-extends Node2D
+extends Node3D
 
-const PLAYER = preload("uid://cobjcpic7a2lq")
 
-@export var spawn : Node2D
+const PLAYER = preload("uid://3gnsls7jtuxo")
 
-var players: Array[CharacterBody2D]
+@export var spawn : Node3D
+
+var players: Array[CharacterBody3D]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,12 +17,12 @@ func on_host_created():
 	multiplayer.peer_connected.connect(spawn_player)
 
 func spawn_player(peer_id: int):
-	var new_player = PLAYER.instantiate() as CharacterBody2D
+	var new_player = PLAYER.instantiate()
 	new_player.name = str(peer_id)
 	add_child(new_player)
 	initialize_player(new_player)
 
-func initialize_player(player: CharacterBody2D):
+func initialize_player(player: Node3D):
 	player.position = spawn.position
 	for other in players:
 		player.add_collision_exception_with(other)
