@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqqi6elxhlg1" path="res://player.gd" id="1_vhbvx"]
 [ext_resource type="Script" uid="uid://b8ts8uc3gchd5" path="res://components/movement_controller.gd" id="2_5ow1q"]
+[ext_resource type="Texture2D" uid="uid://bbx80a3asxl86" path="res://icon.png" id="3_bfwu4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqxis"]
 
@@ -27,6 +28,12 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath("Yaw/Pitch:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71fn4"]
+albedo_texture = ExtResource("3_bfwu4")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3vqtk"]
+material = SubResource("StandardMaterial3D_71fn4")
 
 [node name="FpsController" type="CharacterBody3D" unique_id=583847357]
 script = ExtResource("1_vhbvx")
@@ -61,7 +68,7 @@ unique_name_in_owner = true
 current = true
 
 [node name="indicator" type="MeshInstance3D" parent="Yaw/Pitch/Camera3D" unique_id=112582523]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.95447457)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5783918)
 mesh = SubResource("BoxMesh_3vqtk")
 
 [node name="MovementController" type="Node" parent="." unique_id=370495041]
@@ -75,3 +82,6 @@ target_position = Vector3(0, 0, 0)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=480333943]
 replication_config = SubResource("SceneReplicationConfig_71fn4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=628786014]
+mesh = SubResource("CapsuleMesh_3vqtk")
