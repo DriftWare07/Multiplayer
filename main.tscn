@@ -51,7 +51,7 @@ _spawnable_scenes = PackedStringArray("uid://3gnsls7jtuxo")
 spawn_path = NodePath("..")
 
 [node name="Spawn" type="Node3D" parent="." unique_id=177165472]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.670209, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.249775, 0)
 
 [node name="testmap" parent="." unique_id=1877978097 instance=ExtResource("2_0xm2m")]
 
