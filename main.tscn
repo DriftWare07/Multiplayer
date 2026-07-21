@@ -64,6 +64,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.249775, 0)
 [node name="Plane" parent="testmap" index="0" unique_id=1580538544]
 material_override = SubResource("StandardMaterial3D_1bvp3")
 
+[connection signal="joined_lobby" from="." to="CanvasLayer/Control" method="hide"]
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="CanvasLayer/Control" method="hide"]
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="host_new_lobby"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_object_spawned"]
