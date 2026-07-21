@@ -59,6 +59,7 @@ const CAM_HEIGHT_CROUCH : float = 0.0
 var _input_direction := Vector2.ZERO
 var _direction : Vector3
 var _mouse_delta := Vector2.ZERO
+var crouching = false
 
 
 # Engine virtuals
@@ -93,10 +94,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(_delta: float) -> void:
 	__player_movement()
+	crouching = _movement_controller._movement_state_machine.is_crouching
 
 func _process(_delta: float) -> void:
 	__camera_movement()
-	pass
+
 
 func __camera_input(event : InputEvent) -> void:
 	if not is_multiplayer_authority(): return
@@ -107,7 +109,7 @@ func __camera_input(event : InputEvent) -> void:
 
 func __camera_movement() -> void:
 	if not is_multiplayer_authority(): return
-	yaw.rotate_y(-_mouse_delta.x * camera_sensitivity)
+	rotate_y(-_mouse_delta.x * camera_sensitivity)
 	pitch.rotate_x(-_mouse_delta.y * camera_sensitivity)
 	pitch.rotation.x = clampf(pitch.rotation.x, -PI/3, PI/3)
 	_mouse_delta = Vector2.ZERO
@@ -115,5 +117,5 @@ func __camera_movement() -> void:
 func __player_movement() -> void:
 	if not is_multiplayer_authority(): return
 	_input_direction = Input.get_vector(left, right, forward, backward)
-	_direction = (yaw.transform.basis * Vector3(_input_direction.x, 0, _input_direction.y)).normalized()
+	_direction = (transform.basis * Vector3(_input_direction.x, 0, _input_direction.y)).normalized()
 	move_and_slide()

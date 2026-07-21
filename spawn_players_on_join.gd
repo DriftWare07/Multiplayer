@@ -7,6 +7,8 @@ const PLAYER = preload("uid://3gnsls7jtuxo")
 
 var players: Array[CharacterBody3D]
 
+signal joined_lobby
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Networking.host_created.connect(on_host_created)
@@ -22,7 +24,7 @@ func spawn_player(peer_id: int):
 	add_child(new_player)
 	initialize_player(new_player)
 
-func initialize_player(player: Node3D):
+func initialize_player(player: CharacterBody3D):
 	player.position = spawn.position
 	for other in players:
 		player.add_collision_exception_with(other)

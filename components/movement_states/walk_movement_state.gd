@@ -4,7 +4,7 @@ extends MovementState
 var _speed : float
 
 func _enter_state() -> void:
-	_speed = machine.target.walk_speed
+	if not Input.is_action_pressed("crouch"): _speed = machine.target.walk_speed
 	if machine._can_debug:
 		print_debug("Walk")
 
@@ -14,6 +14,10 @@ func _update_state_unhandled_input(event : InputEvent) -> void:
 	if machine.has_sprint() and event.is_action_pressed(machine.sprint_action):
 		_speed = machine.target.sprint_speed
 	if machine.has_sprint() and event.is_action_released(machine.sprint_action):
+		_speed = machine.target.walk_speed
+	if machine.has_crouch() and event.is_action_pressed(machine.crouch_action):
+		_speed = machine.target.crouch_speed
+	if machine.has_crouch() and event.is_action_released(machine.crouch_action):
 		_speed = machine.target.walk_speed
 
 
