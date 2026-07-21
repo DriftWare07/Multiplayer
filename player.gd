@@ -61,6 +61,7 @@ var _direction : Vector3
 var _mouse_delta := Vector2.ZERO
 var crouching = false
 
+var authority = false
 
 # Engine virtuals
 
@@ -77,7 +78,7 @@ func _ready() -> void:
 	camera_sensitivity = camera_sensitivity / 1000
 	yaw.position.y = CAM_HEIGHT_STAND
 	_movement_controller.initialize(self)
-	
+	authority = is_multiplayer_authority()
 	if not is_multiplayer_authority(): return
 	#this code runs if this is the current player on the client
 	$Yaw/Pitch/Camera3D/indicator.hide()

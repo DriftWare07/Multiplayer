@@ -8,7 +8,7 @@ var air = 0.0
 var crouch = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	if not parent.authority: return
 	speed = lerp(speed, parent.velocity.length(), delta*5)
 	dir.x = lerp(dir.x, parent._input_direction.x, delta*10)
 	dir.y = lerp(dir.y, parent._input_direction.y, delta*10)
