@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://b5kq7dhnr2ho1" path="res://assets/models/AnimationLibrary_Godot.glb" id="2_bfwu4"]
 [ext_resource type="Script" uid="uid://b5o0i8rqgetng" path="res://scripts/delay_point_with_parent.gd" id="3_61quq"]
 [ext_resource type="Script" uid="uid://ccucpt70mmx5s" path="res://scripts/interactor.gd" id="4_1wgqa"]
-[ext_resource type="Script" uid="uid://crn6s530r2tfi" path="res://scripts/AnchorPoint.gd" id="4_776rv"]
 [ext_resource type="Script" uid="uid://m3r8b0ich1l7" path="res://scripts/animationHandler.gd" id="5_e8oi6"]
 [ext_resource type="Script" uid="uid://coey4toomcl4a" path="res://scripts/nameTag.gd" id="6_bqe4w"]
 [ext_resource type="Texture2D" uid="uid://nppgb15j3y1e" path="res://assets/textures/crosshair117.png" id="7_l5wgo"]
@@ -229,8 +228,7 @@ nodes/crouch/node = SubResource("AnimationNodeBlendSpace2D_xjja8")
 nodes/crouch/position = Vector2(-1559.6547, 857.3413)
 node_connections = [&"output", 0, &"Blend2", &"run", 0, &"Animation", &"run", 1, &"direction", &"inair", 0, &"crouching", &"inair", 1, &"Animation 2", &"TimeScale", 0, &"inair", &"Blend2", 0, &"TimeScale", &"Blend2", 1, &"Arms", &"crouching", 0, &"run", &"crouching", 1, &"crouch"]
 
-[node name="FpsController" type="CharacterBody3D" unique_id=583847357 node_paths=PackedStringArray("anchorpoint")]
-collision_layer = 3
+[node name="FpsController" type="CharacterBody3D" unique_id=583847357]
 script = ExtResource("1_vhbvx")
 forward = &"forward"
 backward = &"backward"
@@ -239,7 +237,6 @@ right = &"right"
 sprint = &"sprint"
 crouch = &"crouch"
 jump = &"jump"
-anchorpoint = NodePath("model/CarryAnchorPoint")
 metadata/_custom_type_script = "uid://bqqi6elxhlg1"
 
 [node name="model" type="Node3D" parent="." unique_id=1803030168]
@@ -249,9 +246,9 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 
 [node name="Skeleton3D" parent="model/AnimationLibrary_Godot/Rig" parent_id_path=PackedInt32Array(347273188, 341267236) index="0" unique_id=1276083915]
 bones/0/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
-bones/1/position = Vector3(-0.025587084, 0.027647981, 0.7504292)
-bones/1/rotation = Quaternion(0.69766325, 0.19794676, 0.13845035, 0.67447364)
-bones/3/rotation = Quaternion(-0.0024411723, -0.14075994, 0.045624852, 0.9889889)
+bones/1/position = Vector3(0.00054722594, 0.040690467, 0.8272308)
+bones/1/rotation = Quaternion(0.70755684, 0.15962274, 0.19975537, 0.65877295)
+bones/3/rotation = Quaternion(-0.006874542, -0.1250643, -0.008556283, 0.992088)
 bones/4/rotation = Quaternion(0.27773622, -0.11342367, -0.0317465, 0.9534097)
 bones/5/rotation = Quaternion(-0.05891276, 0.07856896, 0.01306048, 0.9950807)
 bones/6/rotation = Quaternion(0.02039616, 0.17173518, -0.031192087, 0.984438)
@@ -293,26 +290,18 @@ bones/41/rotation = Quaternion(0.62334144, 0.00066515116, 0.0008344124, 0.781949
 bones/42/rotation = Quaternion(-0.29083845, 0.9496492, 0.11458334, -0.021217054)
 bones/43/rotation = Quaternion(0.21939006, -0.02380263, 0.0053050756, 0.9753324)
 bones/44/rotation = Quaternion(0.68738776, 0.00030898867, 0.00044450545, 0.72629046)
-bones/45/rotation = Quaternion(0.92703754, 0.19960116, -0.024427418, 0.31648737)
-bones/46/rotation = Quaternion(0.63030624, 0.19747406, -0.17071754, 0.7311454)
-bones/47/rotation = Quaternion(-0.6401483, -0.030295756, 0.27267036, 0.7175954)
-bones/48/rotation = Quaternion(-0.0001373025, 0.9642144, -0.26512334, -0.0004993449)
-bones/49/rotation = Quaternion(0.92717355, -0.17735778, 0.02174596, 0.32927272)
-bones/50/rotation = Quaternion(0.628589, 0.19614913, -0.1688749, 0.73340493)
-bones/51/rotation = Quaternion(-0.6090456, -0.036511544, -0.085241176, 0.7876956)
-bones/52/rotation = Quaternion(-0.0002266579, 0.8991579, -0.43762413, -0.00046568003)
+bones/45/rotation = Quaternion(0.9771755, -0.17014034, 0.02107938, 0.12544356)
+bones/46/rotation = Quaternion(0.487627, 0.08841955, -0.049712796, 0.8671394)
+bones/47/rotation = Quaternion(-0.49590778, 0.09600241, -0.106300786, 0.8564807)
+bones/48/rotation = Quaternion(-0.00027054793, 0.85267675, -0.5224386, -0.0004415812)
+bones/49/rotation = Quaternion(0.9136791, 0.018797755, -0.0023193522, 0.40599483)
+bones/50/rotation = Quaternion(0.47496435, 0.28507677, -0.16653708, 0.8157239)
+bones/51/rotation = Quaternion(-0.50664604, -0.040542662, -0.032707173, 0.86057913)
+bones/52/rotation = Quaternion(-0.00013708154, 0.9643068, -0.264787, -0.0004993771)
 
 [node name="DelayPointWithParent" type="Node" parent="model" unique_id=1235741200]
 script = ExtResource("3_61quq")
 offset = Vector3(0, 180, 0)
-
-[node name="CarryAnchorPoint" type="Node3D" parent="model" unique_id=499928535]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3841858e-07, 0.722424, -1.4811507)
-script = ExtResource("4_776rv")
-break_distance = 500.0
-angular_stiffness = 0.0
-metadata/_custom_type_script = "uid://crn6s530r2tfi"
 
 [node name="StandingCollisionShape" type="CollisionShape3D" parent="." unique_id=504792037]
 unique_name_in_owner = true
@@ -338,7 +327,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.1835632)
 
 [node name="interactor" type="RayCast3D" parent="Yaw/Pitch/Camera3D" unique_id=2013498122 node_paths=PackedStringArray("parent")]
 target_position = Vector3(0, 0, -5)
-collision_mask = 3
 script = ExtResource("4_1wgqa")
 parent = NodePath("../../../..")
 
@@ -388,25 +376,23 @@ stretch_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="contextMenu" type="Panel" parent="CanvasLayer" unique_id=333528303]
-unique_name_in_owner = true
 offset_right = 128.0
 offset_bottom = 128.0
-mouse_filter = 2
 
-[node name="contextCont" type="RichTextLabel" parent="CanvasLayer/contextMenu" unique_id=1794932901]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 32)
+[node name="vbox" type="VBoxContainer" parent="CanvasLayer/contextMenu" unique_id=827675594]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="RichTextLabel" parent="CanvasLayer/contextMenu/vbox" unique_id=1794932901]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
 bbcode_enabled = true
 text = "[wave]Option"
 horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [editable path="model/AnimationLibrary_Godot"]

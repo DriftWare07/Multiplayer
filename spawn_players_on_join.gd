@@ -8,6 +8,7 @@ const PLAYER = preload("uid://3gnsls7jtuxo")
 var players: Array[CharacterBody3D]
 
 signal joined_lobby
+signal created_lobby
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +18,7 @@ func _ready() -> void:
 func on_host_created():
 	spawn_player(multiplayer.get_unique_id())
 	multiplayer.peer_connected.connect(spawn_player)
+	created_lobby.emit()
 
 func spawn_player(peer_id: int):
 	var new_player = PLAYER.instantiate()

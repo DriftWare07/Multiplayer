@@ -56,6 +56,8 @@ const CAM_HEIGHT_CROUCH : float = 0.0
 
 @onready var _movement_controller : Node = %MovementController
 
+@export var anchorpoint : AnchorPoint
+
 var _input_direction := Vector2.ZERO
 var _direction : Vector3
 var _mouse_delta := Vector2.ZERO
@@ -81,7 +83,7 @@ func _ready() -> void:
 	authority = is_multiplayer_authority()
 	if not is_multiplayer_authority(): return
 	#this code runs if this is the current player on the client
-	$Yaw/Pitch/Camera3D/indicator.hide()
+	
 	camera.current = true
 
 func _unhandled_input(event: InputEvent) -> void:

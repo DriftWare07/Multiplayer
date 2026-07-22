@@ -10,13 +10,13 @@ func _ready() -> void:
 	
 	sid = Networking.peer.get_steam_id_for_peer_id(id)
 	
-	Steam.persona_state_change.connect(setNameFromPersona)
-	Steam.requestUserInformation(sid, true)
+	
+	if !get_parent().authority: text = Steam.getPersonaName()
 
 
 
 func setNameFromPersona(steam_id: int, flags: int = 0):
-	print("got name")
+	#print("got name")
 	if steam_id != sid: return
 	#if steam_id == id:
 	Steam.requestUserInformation(sid, true)
@@ -24,5 +24,5 @@ func setNameFromPersona(steam_id: int, flags: int = 0):
 	
 	if n == "": text = "Loading"
 	else: text = n
-	print(Steam.getFriendPersonaName(steam_id))
+	#print(Steam.getFriendPersonaName(steam_id))
 	
