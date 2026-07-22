@@ -17,11 +17,12 @@ func _ready() -> void:
 
 func setNameFromPersona(steam_id: int, flags: int = 0):
 	print("got name")
+	if steam_id != sid: return
 	#if steam_id == id:
 	Steam.requestUserInformation(sid, true)
-	var n = Steam.getFriendPersonaName(id)
+	var n = Steam.getFriendPersonaName(steam_id)
 	
 	if n == "": text = "Loading"
 	else: text = n
-	print(Steam.getFriendPersonaName(id))
-	print(steam_id)
+	print(Steam.getFriendPersonaName(steam_id))
+	
