@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b5kq7dhnr2ho1" path="res://assets/models/AnimationLibrary_Godot.glb" id="2_bfwu4"]
 [ext_resource type="Script" uid="uid://b5o0i8rqgetng" path="res://scripts/delay_point_with_parent.gd" id="3_61quq"]
 [ext_resource type="Script" uid="uid://m3r8b0ich1l7" path="res://scripts/animationHandler.gd" id="5_e8oi6"]
+[ext_resource type="Script" uid="uid://coey4toomcl4a" path="res://scripts/nameTag.gd" id="6_bqe4w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqxis"]
 
@@ -30,30 +31,27 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath("Yaw/Pitch:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
-properties/3/path = NodePath("model:rotation")
+properties/3/path = NodePath("AnimationTree:parameters/run/blend_amount")
 properties/3/spawn = true
 properties/3/replication_mode = 1
-properties/4/path = NodePath("AnimationTree:parameters/run/blend_amount")
+properties/4/path = NodePath("AnimationTree:parameters/direction/blend_position")
 properties/4/spawn = true
 properties/4/replication_mode = 1
-properties/5/path = NodePath("AnimationTree:parameters/direction/blend_position")
+properties/5/path = NodePath("AnimationTree:parameters/inair/blend_amount")
 properties/5/spawn = true
 properties/5/replication_mode = 1
-properties/6/path = NodePath("AnimationTree:parameters/inair/blend_amount")
+properties/6/path = NodePath("AnimationTree:parameters/TimeScale/scale")
 properties/6/spawn = true
 properties/6/replication_mode = 1
-properties/7/path = NodePath("AnimationTree:parameters/TimeScale/scale")
+properties/7/path = NodePath("AnimationTree:parameters/Blend2/blend_amount")
 properties/7/spawn = true
 properties/7/replication_mode = 1
-properties/8/path = NodePath("AnimationTree:parameters/Blend2/blend_amount")
+properties/8/path = NodePath("AnimationTree:parameters/crouching/blend_amount")
 properties/8/spawn = true
 properties/8/replication_mode = 1
-properties/9/path = NodePath("AnimationTree:parameters/crouching/blend_amount")
+properties/9/path = NodePath("AnimationTree:parameters/crouch/blend_position")
 properties/9/spawn = true
 properties/9/replication_mode = 1
-properties/10/path = NodePath("AnimationTree:parameters/crouch/blend_position")
-properties/10/spawn = true
-properties/10/replication_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mrkuk"]
 animation = &"Jump"
@@ -238,16 +236,16 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 
 [node name="Skeleton3D" parent="model/AnimationLibrary_Godot/Rig" parent_id_path=PackedInt32Array(347273188, 341267236) index="0" unique_id=1276083915]
 bones/0/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
-bones/1/position = Vector3(-0.031505756, 0.024802422, 0.8318221)
-bones/1/rotation = Quaternion(0.6948939, 0.20643565, 0.12452169, 0.6774962)
-bones/3/rotation = Quaternion(0.009025833, -0.14570044, 0.057747964, 0.98760074)
-bones/4/rotation = Quaternion(0.13467237, -0.15797637, -0.029032417, 0.9777852)
-bones/5/rotation = Quaternion(0.120284244, 0.107476875, -0.0032535745, 0.9868992)
-bones/6/rotation = Quaternion(-0.043231267, 0.21119075, 0.010883338, 0.97642773)
+bones/1/position = Vector3(-0.01879434, 0.030951228, 0.8424542)
+bones/1/rotation = Quaternion(0.70059603, 0.18812081, 0.15440878, 0.67077094)
+bones/3/rotation = Quaternion(-0.0034237048, -0.14443834, 0.030468268, 0.9890387)
+bones/4/rotation = Quaternion(0.12336877, -0.1574448, -0.031466547, 0.9792861)
+bones/5/rotation = Quaternion(0.12775576, 0.10744211, -0.0016049839, 0.98596764)
+bones/6/rotation = Quaternion(-0.029970782, 0.21133223, 0.012144661, 0.9768793)
 bones/7/rotation = Quaternion(-0.66136396, -0.21571872, -0.22314048, 0.6828407)
-bones/8/rotation = Quaternion(0.45943788, 0.4013509, -0.7192108, 0.3325211)
-bones/9/rotation = Quaternion(0.49572802, -0.20091783, 0.11906976, 0.8364856)
-bones/10/rotation = Quaternion(-0.05898425, -0.60824597, 0.31302094, 0.72703207)
+bones/8/rotation = Quaternion(0.45027477, 0.39625123, -0.73274165, 0.32144564)
+bones/9/rotation = Quaternion(0.47347754, -0.20536391, 0.11455138, 0.84883606)
+bones/10/rotation = Quaternion(-0.052687988, -0.59921867, 0.29864818, 0.7409253)
 bones/11/rotation = Quaternion(-3.145929e-07, 0.70710963, -9.027872e-09, 0.7071039)
 bones/12/rotation = Quaternion(0.34956676, -7.873813e-08, 4.1465816e-07, 0.93691146)
 bones/13/rotation = Quaternion(0.26146045, -1.6017113e-07, 3.5544016e-07, 0.9652142)
@@ -264,9 +262,9 @@ bones/23/rotation = Quaternion(0.247413, 0.94579446, 0.20344144, 0.053584028)
 bones/24/rotation = Quaternion(-0.00013550371, -7.4120224e-05, 4.7770667e-05, 1)
 bones/25/rotation = Quaternion(0.0002474898, 8.094721e-05, -0.0005348789, 0.9999998)
 bones/26/rotation = Quaternion(-0.5051996, 0.4571023, 0.5156674, 0.5195363)
-bones/27/rotation = Quaternion(0.6489209, -0.32417372, 0.60049534, 0.33647949)
-bones/28/rotation = Quaternion(0.24853885, 0.39871562, -0.1131918, 0.87546676)
-bones/29/rotation = Quaternion(-0.042661827, 0.3238293, -0.089560434, 0.94090044)
+bones/27/rotation = Quaternion(0.6464452, -0.32058436, 0.60857356, 0.33011007)
+bones/28/rotation = Quaternion(0.21765284, 0.41217914, -0.10208303, 0.8788144)
+bones/29/rotation = Quaternion(-0.022709334, 0.31797215, -0.0798282, 0.9444605)
 bones/30/rotation = Quaternion(-0.032639876, -0.70641524, 0.029968042, 0.7064093)
 bones/31/rotation = Quaternion(0.38319927, -0.028363716, 0.0117728235, 0.92315507)
 bones/32/rotation = Quaternion(0.5064349, -9.8691764e-08, 8.4920663e-07, 0.8622782)
@@ -282,14 +280,14 @@ bones/41/rotation = Quaternion(0.3908922, 0.00041758784, 0.0009825736, 0.9204358
 bones/42/rotation = Quaternion(-0.38615894, 0.91559833, 0.11206052, 0.0018756783)
 bones/43/rotation = Quaternion(0.23493655, -0.13730122, 0.22521003, 0.9355393)
 bones/44/rotation = Quaternion(0.47781008, 0.00018448757, 0.0005090525, 0.87846303)
-bones/45/rotation = Quaternion(0.9384242, 0.23624904, -0.02893196, 0.25041848)
-bones/46/rotation = Quaternion(0.5002585, 0.20180643, -0.1216842, 0.8331918)
-bones/47/rotation = Quaternion(-0.555281, -0.05901248, 0.20536402, 0.80374515)
-bones/48/rotation = Quaternion(-0.00014195828, 0.9616873, -0.27414858, -0.0004980228)
-bones/49/rotation = Quaternion(0.9673208, -0.21591379, 0.026762893, 0.13021316)
-bones/50/rotation = Quaternion(0.3795827, 0.21585299, -0.0913481, 0.8949749)
-bones/51/rotation = Quaternion(-0.48397192, -0.04096146, -0.10620979, 0.8676478)
-bones/52/rotation = Quaternion(-0.00022420853, 0.90140665, -0.43297333, -0.0004668262)
+bones/45/rotation = Quaternion(0.9673678, 0.121242784, -0.01476372, 0.22199504)
+bones/46/rotation = Quaternion(0.43378702, 0.16862457, -0.08352029, 0.8811465)
+bones/47/rotation = Quaternion(-0.50939363, 0.10601183, 0.15314253, 0.8401351)
+bones/48/rotation = Quaternion(-0.0002736466, 0.848997, -0.52839744, -0.00043966828)
+bones/49/rotation = Quaternion(0.9051209, -0.18867677, 0.02330216, 0.38028184)
+bones/50/rotation = Quaternion(0.7075291, 0.17998235, -0.19578215, 0.6547352)
+bones/51/rotation = Quaternion(-0.5839719, -0.04795985, -0.12198865, 0.8011215)
+bones/52/rotation = Quaternion(-0.00013739332, 0.96417147, -0.26527932, -0.0004993409)
 
 [node name="DelayPointWithParent" type="Node" parent="model" unique_id=1235741200]
 script = ExtResource("3_61quq")
@@ -344,5 +342,11 @@ parameters/Blend2/blend_amount = 1.0
 parameters/crouching/blend_amount = 0.0
 parameters/crouch/blend_position = Vector2(-0.001986742, 0.01170969)
 script = ExtResource("5_e8oi6")
+
+[node name="nameTag" type="Label3D" parent="." unique_id=1044936141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1356314, 0)
+billboard = 1
+text = "Name"
+script = ExtResource("6_bqe4w")
 
 [editable path="model/AnimationLibrary_Godot"]
