@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://m3r8b0ich1l7" path="res://scripts/animationHandler.gd" id="5_e8oi6"]
 [ext_resource type="Script" uid="uid://coey4toomcl4a" path="res://scripts/nameTag.gd" id="6_bqe4w"]
 [ext_resource type="Texture2D" uid="uid://nppgb15j3y1e" path="res://assets/textures/crosshair117.png" id="7_l5wgo"]
+[ext_resource type="Shader" uid="uid://dk8362an4whbk" path="res://assets/shader/pixelate.gdshader" id="10_bbvuu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqxis"]
 
@@ -229,6 +230,23 @@ nodes/crouch/node = SubResource("AnimationNodeBlendSpace2D_xjja8")
 nodes/crouch/position = Vector2(-1559.6547, 857.3413)
 node_connections = [&"output", 0, &"Blend2", &"run", 0, &"Animation", &"run", 1, &"direction", &"inair", 0, &"crouching", &"inair", 1, &"Animation 2", &"TimeScale", 0, &"inair", &"Blend2", 0, &"TimeScale", &"Blend2", 1, &"Arms", &"crouching", 0, &"run", &"crouching", 1, &"crouch"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_776rv"]
+shader = ExtResource("10_bbvuu")
+shader_parameter/exposure = 1.0
+shader_parameter/contrast = 1.25
+shader_parameter/saturation = 0.9
+shader_parameter/enable_pixelate = true
+shader_parameter/pixel_factor = 2.0
+shader_parameter/enable_posterize = true
+shader_parameter/color_levels = 12.0
+shader_parameter/dither_strength = 0.75
+shader_parameter/chrom_aberration = 4.0
+shader_parameter/vignette_strength = 1.570000074575
+shader_parameter/grain_strength = 0.2
+shader_parameter/tint_color = Vector3(0.95, 1.03, 0.9)
+shader_parameter/tint_strength = 0.15
+shader_parameter/viewport_size_override = Vector2(0, 0)
+
 [node name="FpsController" type="CharacterBody3D" unique_id=583847357 node_paths=PackedStringArray("anchorpoint")]
 collision_layer = 3
 script = ExtResource("1_vhbvx")
@@ -249,9 +267,9 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 
 [node name="Skeleton3D" parent="model/AnimationLibrary_Godot/Rig" parent_id_path=PackedInt32Array(347273188, 341267236) index="0" unique_id=1276083915]
 bones/0/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
-bones/1/position = Vector3(-0.025587084, 0.027647981, 0.7504292)
-bones/1/rotation = Quaternion(0.69766325, 0.19794676, 0.13845035, 0.67447364)
-bones/3/rotation = Quaternion(-0.0024411723, -0.14075994, 0.045624852, 0.9889889)
+bones/1/position = Vector3(-0.030903507, 0.025090547, 0.801674)
+bones/1/rotation = Quaternion(0.69518495, 0.2055749, 0.12594016, 0.6771972)
+bones/3/rotation = Quaternion(0.007205712, -0.14501983, 0.05647779, 0.98778933)
 bones/4/rotation = Quaternion(0.27773622, -0.11342367, -0.0317465, 0.9534097)
 bones/5/rotation = Quaternion(-0.05891276, 0.07856896, 0.01306048, 0.9950807)
 bones/6/rotation = Quaternion(0.02039616, 0.17173518, -0.031192087, 0.984438)
@@ -293,14 +311,14 @@ bones/41/rotation = Quaternion(0.62334144, 0.00066515116, 0.0008344124, 0.781949
 bones/42/rotation = Quaternion(-0.29083845, 0.9496492, 0.11458334, -0.021217054)
 bones/43/rotation = Quaternion(0.21939006, -0.02380263, 0.0053050756, 0.9753324)
 bones/44/rotation = Quaternion(0.68738776, 0.00030898867, 0.00044450545, 0.72629046)
-bones/45/rotation = Quaternion(0.92703754, 0.19960116, -0.024427418, 0.31648737)
-bones/46/rotation = Quaternion(0.63030624, 0.19747406, -0.17071754, 0.7311454)
-bones/47/rotation = Quaternion(-0.6401483, -0.030295756, 0.27267036, 0.7175954)
-bones/48/rotation = Quaternion(-0.0001373025, 0.9642144, -0.26512334, -0.0004993449)
-bones/49/rotation = Quaternion(0.92717355, -0.17735778, 0.02174596, 0.32927272)
-bones/50/rotation = Quaternion(0.628589, 0.19614913, -0.1688749, 0.73340493)
-bones/51/rotation = Quaternion(-0.6090456, -0.036511544, -0.085241176, 0.7876956)
-bones/52/rotation = Quaternion(-0.0002266579, 0.8991579, -0.43762413, -0.00046568003)
+bones/45/rotation = Quaternion(0.9326657, 0.23100547, -0.028246067, 0.27563292)
+bones/46/rotation = Quaternion(0.54818594, 0.20375012, -0.14054365, 0.7988903)
+bones/47/rotation = Quaternion(-0.58827406, -0.053916138, 0.2224348, 0.7755962)
+bones/48/rotation = Quaternion(-0.00013713783, 0.9642954, -0.26482853, -0.0004993757)
+bones/49/rotation = Quaternion(0.9540252, -0.21764013, 0.026922058, 0.20431371)
+bones/50/rotation = Quaternion(0.49198195, 0.20077743, -0.118167505, 0.83885556)
+bones/51/rotation = Quaternion(-0.53711003, -0.044006474, -0.07912394, 0.83863914)
+bones/52/rotation = Quaternion(-0.00022903683, 0.8969068, -0.44221932, -0.0004645078)
 
 [node name="DelayPointWithParent" type="Node" parent="model" unique_id=1235741200]
 script = ExtResource("3_61quq")
@@ -310,6 +328,7 @@ offset = Vector3(0, 180, 0)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3841858e-07, 0.722424, -1.4811507)
 script = ExtResource("4_776rv")
+stiffness = 5000.0
 break_distance = 500.0
 angular_stiffness = 0.0
 metadata/_custom_type_script = "uid://crn6s530r2tfi"
@@ -341,6 +360,7 @@ target_position = Vector3(0, 0, -5)
 collision_mask = 3
 script = ExtResource("4_1wgqa")
 parent = NodePath("../../../..")
+max_throw_strength = 150.0
 
 [node name="MovementController" type="Node" parent="." unique_id=370495041]
 unique_name_in_owner = true
@@ -378,14 +398,34 @@ script = ExtResource("6_bqe4w")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=125232678]
 
 [node name="crosshair" type="TextureRect" parent="CanvasLayer" unique_id=972786739]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_l5wgo")
+stretch_mode = 3
+
+[node name="ThrowChargeBar" type="TextureProgressBar" parent="CanvasLayer/crosshair" unique_id=1075924047]
+unique_name_in_owner = true
+modulate = Color(0.90017277, 0.42515758, 5.7756904e-07, 1)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_l5wgo")
-stretch_mode = 3
-metadata/_edit_use_anchors_ = true
+max_value = 3.0
+step = 0.1
+value = 3.0
+fill_mode = 8
+texture_progress = ExtResource("7_l5wgo")
 
 [node name="contextMenu" type="Panel" parent="CanvasLayer" unique_id=333528303]
 unique_name_in_owner = true
@@ -408,5 +448,15 @@ text = "[wave]Option"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="post" type="ColorRect" parent="CanvasLayer" unique_id=1035554701]
+visible = false
+material = SubResource("ShaderMaterial_776rv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [editable path="model/AnimationLibrary_Godot"]

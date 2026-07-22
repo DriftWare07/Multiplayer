@@ -6,8 +6,12 @@ class_name Interactor3D
 @onready var context = %contextMenu
 @onready var context_cont = %contextCont
 
+@export var max_throw_strength = 100.0
+
 var obj : Interactable3D
 var idx = 0
+var max_charge = 3.0
+var charge = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_colliding():
@@ -42,5 +46,23 @@ func _process(delta: float) -> void:
 		idx = 0
 		context.hide()
 	
-	if Input.is_action_just_pressed("ungrab"):
+	
+	if Input.is_action_just_released("ungrab") and not parent.anchorpoint.anchorable == null:
+		
+		var phy : RigidBody3D = parent.anchorpoint.anchorable
 		parent.anchorpoint.drop_anchorable()
+		if charge > max_charge/6: 
+			phy.apply_central_impulse(-global_transform.basis.z*lerp(0.0, max_throw_strength, charge/max_charge))
+	
+	
+	if Input.is_action_pressed("ungrab"):
+		charge += delta
+		print(charge)
+	else:
+		charge = 0.0
+	
+	charge = clamp(charge, 0.0, max_charge)
+	
+	%ThrowChargeBar.value = charge
+	%ThrowChargeBar.max_value = max_charge
+	
