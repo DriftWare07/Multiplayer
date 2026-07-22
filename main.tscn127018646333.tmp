@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://d0r44asslirrw"]
+
+[ext_resource type="Script" uid="uid://blsa8igvtjuog" path="res://spawn_players_on_join.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://k0s5m77qeyc1" path="res://assets/models/testmap.glb" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://dmj5ewdbo6du2" path="res://assets/textures/texture_13.png" id="3_h2yge"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_h2yge"]
+sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 2
+sky = SubResource("Sky_h2yge")
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_texture = ExtResource("3_h2yge")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Node2D" type="Node3D" unique_id=990556879 node_paths=PackedStringArray("spawn")]
+script = ExtResource("1_ig7tw")
+spawn = NodePath("Spawn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1091070074]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1139246796]
+environment = SubResource("Environment_1bvp3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1864161113]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1637693511]
+anchors_preset = -1
+anchor_left = 0.040798612
+anchor_top = 0.85030866
+anchor_right = 0.15277778
+anchor_bottom = 0.9444444
+text = "Host Game"
+metadata/_edit_use_anchors_ = true
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1784067369]
+_spawnable_scenes = PackedStringArray("uid://3gnsls7jtuxo")
+spawn_path = NodePath("..")
+
+[node name="Spawn" type="Node3D" parent="." unique_id=177165472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.249775, 0)
+
+[node name="testmap" parent="." unique_id=1877978097 instance=ExtResource("2_0xm2m")]
+
+[node name="Plane" parent="testmap" index="0" unique_id=1580538544]
+material_override = SubResource("StandardMaterial3D_1bvp3")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="host_new_lobby"]
+[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_object_spawned"]
+
+[editable path="testmap"]
